@@ -4,21 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Memory {
-    private final long size;
-    private List<String> objects = new ArrayList<>();
-    private static List<String> list1mb;
+    private final int size;
+    private byte[] objects;
 
-    public Memory(long size) {
+    public Memory(int size) {
         this.size = size;
-        if (list1mb == null) {
-            list1mb = new ArrayList<>();
-            for (int i = 0; i < 1024*1024; i++) list1mb.add(("1"));
-        }
-        objects = new ArrayList<>();
-        for (int i = 0; i < size; i++) objects.addAll(list1mb);
+        objects = new byte[size*1024*1024];
     }
 
-    public long getsize() {
+    public int getSize() {
         return size;
     }
 

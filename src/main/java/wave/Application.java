@@ -30,9 +30,14 @@ public class Application {
     }
 
     @GetMapping("/memory")
-    public String memory(@RequestParam(value = "size", defaultValue = "0") Long size) {
-        if ((size!=0) || (m == null))  m = new Memory(size);
-        return htmlWrapper(Arrays.asList(size.toString(), m.getHeapSize(), m.getHeapMaxSize(), m.getHeapFreeSize()));
+    public String memory(@RequestParam(value = "size", defaultValue = "0") int size) {
+        if ((size>0) || (m == null))  m = new Memory(size);
+        return htmlWrapper(
+                Arrays.asList("requestedSize[MiB]="+Integer.toString(m.getSize()),
+                m.getHeapFreeSize(),
+                m.getHeapSize(),
+                m.getHeapMaxSize())
+        );
     }
 
     @RequestMapping("/gc")

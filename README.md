@@ -26,3 +26,20 @@ Exposes the following endpoints (via actuator)
 
 More about these:
 https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
+
+# Usage
+## Local
+```
+docker run -it --rm -e JAVA_OPTS="<java options>" -p 8080:8080 serbangilvitu/wave:<tag>
+```
+Available tags: `jdk8`, `jdk11`, `jdk14`
+
+Example
+```
+docker run -it --rm -e JAVA_OPTS="-Xmx1024m" -p 8080:8080 serbangilvitu/wave:jdk8
+```
+
+You can identify the local process using
+```
+ps -C java -o pid,%cpu,%mem,args| grep wave
+```

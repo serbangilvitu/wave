@@ -33,10 +33,7 @@ public class Application {
     public String memory(@RequestParam(value = "size", defaultValue = "0") int size) {
         if ((size>0) || (m == null))  m = new Memory(size);
         return htmlWrapper(
-                Arrays.asList("requestedSize[MiB]="+Integer.toString(m.getSize()),
-                m.getHeapFreeSize(),
-                m.getHeapSize(),
-                m.getHeapMaxSize())
+                Arrays.asList("requestedSize[MiB]="+Integer.toString(m.getSize()))
         );
     }
 

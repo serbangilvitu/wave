@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wave
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "env,health,metrics,prometheus"
+  endpoint:
+    health:
+      show-details: ALWAYS

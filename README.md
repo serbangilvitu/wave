@@ -1,4 +1,4 @@
-[![DockerHub](https://img.shields.io/badge/Dockerhub-serbangilvitu%2Fkube--utils-orange.svg)](https://hub.docker.com/r/serbangilvitu/wave)
+[![DockerHub](https://img.shields.io/badge/Dockerhub-serbangilvitu%2Fwave-orange.svg)](https://hub.docker.com/r/serbangilvitu/wave)
 # wave
 Simple app which can be used to study the behaviour of containerized Java applications, running with different JDKs and configurations. 
 

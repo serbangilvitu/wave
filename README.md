@@ -66,7 +66,6 @@ kubectl port-forward svc/prometheus-server 9090:80
 ## Validate setup
 Go to http://localhost:9090/targets
 
-You should see your services under kubernetes-service-endpoints
 
 ## JVM Heap Allocation Demo
 ### Deploy Kubernetes demo app

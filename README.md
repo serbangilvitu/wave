@@ -65,6 +65,7 @@ kubectl port-forward svc/prometheus-server 9090:80
 
 ## Validate setup
 Go to http://localhost:9090/targets
+
 You should see your services under kubernetes-service-endpoints
 
 ## JVM Heap Allocation Demo
@@ -85,10 +86,15 @@ http://localhost:9090/graph?g0.range_input=5m&g0.stacked=1&g0.expr=sum(jvm_memor
 
 ### Memory allocation demo
 1) Allocate 300 MiB
+
 http://localhost:8080/memory?size=300
 
 2) Wait 1-2 minutes
 
 3) Reduce object size to 100 MiB and invoke System.gc()
+
 http://localhost:8080/memory?size=100
+
 http://localhost:8080/gc
+
+![JVM Heap Demo](https://github.com/serbangilvitu/wave/blob/master/jvm-heap-demo.png?raw=true)

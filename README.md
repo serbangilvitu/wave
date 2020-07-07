@@ -69,6 +69,7 @@ You should see your services under kubernetes-service-endpoints
 
 ## JVM Heap Allocation Demo
 ### Deploy Kubernetes demo app
+The demo is using JDK8, but the same could be done for JDK11 or 14, by simply updating the image in deployment.yaml
 ```
 kubectl apply -f k8s/wave-jdk8/
 ```

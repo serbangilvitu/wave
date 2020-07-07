@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: wave-jdk8
+  labels:
+    app: wave-jdk8
+spec:
+  selector:
+    app: wave-jdk8
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: default
+  type: ClusterIP

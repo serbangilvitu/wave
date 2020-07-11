@@ -10,6 +10,15 @@ Simple app which can be used to study the behaviour of containerized Java applic
 
 [Usage](https://github.com/serbangilvitu/wave/blob/master/README.md#usage)
 
+[JVM Heap Allocation Demo in Kubernetes](https://github.com/serbangilvitu/wave/blob/master/README.md#jvm-heap-allocation-demo-in-kubernetes)
+* [Prometheus](https://github.com/serbangilvitu/wave/blob/master/README.md#prometheus)
+  * [Prerequisites](https://github.com/serbangilvitu/wave/blob/master/README.md#prerequisites)
+  * [Setup](https://github.com/serbangilvitu/wave/blob/master/README.md#setup)
+  * [Validate setup](https://github.com/serbangilvitu/wave/blob/master/README.md#validate-setup)
+* [Deploy Kubernetes demo app](https://github.com/serbangilvitu/wave/blob/master/README.md#deploy-kubernetes-demo-app)
+* [Prometheus Query](https://github.com/serbangilvitu/wave/blob/master/README.md#prometheus-query)
+* [Memory allocation demo](https://github.com/serbangilvitu/wave/blob/master/README.md#memory-allocation-demo)
+
 
 
 ## Endpoints

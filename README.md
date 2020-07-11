@@ -3,7 +3,8 @@
 Simple app which can be used to study the behaviour of containerized Java applications, running with different JDKs and configurations. 
 
 ## Endpoints
-### /memory
+**`/memory`**
+
 With no parameter: shows the current request size, and details about the heap.
 
 Set the requested size of the objects (in MiB)
@@ -15,15 +16,14 @@ E.g. set to 100 MiB
 `/memory?size=100`
 
 
-### /gc
+**`/gc`**
+
 Requests a garbage collection via System.gc()
+This shouldn't be required, as GC will happen automatically, but it can be useful if you want to speed up your tests.
 
 ## Actuator Endpoints
 Exposes the following endpoints (via actuator)
-### /actuator/env
-### /actuator/health
-### /actuator/metrics
-### /actuator/prometheus
+`/actuator/env` `/actuator/health` `/actuator/metrics` `/actuator/prometheus`
 
 More about these:
 https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
@@ -72,7 +72,7 @@ Go to http://localhost:9090/targets
 ### Deploy Kubernetes demo app
 The demo is using JDK8, but the same could be done for JDK11 or 14, by simply passing a different value for deployment.image.tag
 ```
-helm template wave k8s/wave -f k8s/wave/values.yaml --set deployment.image.tag="jdk8"| kubectl apply -f -
+helm template wave-jdk8 k8s/wave -f k8s/wave/values.yaml --set deployment.image.tag="jdk8"| kubectl apply -f -
 ```
 
 Expose the service using port forwarding

@@ -1,4 +1,4 @@
-package wave;
+package com.sgilvitu.wave;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,35 +16,30 @@ public class Application {
 
     Memory m;
 
-    private String htmlWrapper(List<String> list) {
-        String content = "";
-        for (String s : list) {
-            content = content + String.format("<p>%s</p>", s);
-        }
-        return "<html><body>" + content + "</body></html>";
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
     }
 
     @RequestMapping("/")
     public String home() {
-        return "Hello";
+        return "<html><body><table>"+
+                "<tr><td>Endpoints</td></tr>" +
+                "<tr><td>/actuator</td></tr>" +
+                "<tr><td>/gc</td></tr>" +
+                "<tr><td>/memory</td></tr>" +
+                "</body></html>";
     }
 
     @GetMapping("/memory")
     public String memory(@RequestParam(value = "size", defaultValue = "0") int size) {
-        if ((size>0) || (m == null))  m = new Memory(size);
-        return htmlWrapper(
-                Arrays.asList("requestedSize[MiB]="+Integer.toString(m.getSize()))
-        );
+        if ((size > 0) || (m == null)) m = new Memory(size);
+        return Integer.toString(m.getSize());
     }
 
     @RequestMapping("/gc")
     public String gc() {
         System.gc();
-        return htmlWrapper(Arrays.asList("GC"));
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        return "GC";
     }
 
 }

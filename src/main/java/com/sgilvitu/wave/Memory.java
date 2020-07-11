@@ -1,7 +1,4 @@
-package wave;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.sgilvitu.wave;
 
 public class Memory {
     private final int size;
@@ -9,7 +6,7 @@ public class Memory {
 
     public Memory(int size) {
         this.size = size;
-        objects = new byte[size*1024*1024];
+        objects = new byte[size * 1024 * 1024];
     }
 
     public int getSize() {

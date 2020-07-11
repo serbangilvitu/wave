@@ -2,8 +2,13 @@
 # wave
 Simple app which can be used to study the behaviour of containerized Java applications, running with different JDKs and configurations. 
 
+[Endpoints](https://github.com/serbangilvitu/wave#endpoints)
+
+[Actuator Endpoints](https://github.com/serbangilvitu/wave#actuator-endpoints)
+
+
 ## Endpoints
-**`/memory`**
+### `/memory`
 
 With no parameter: shows the current request size, and details about the heap.
 
@@ -16,7 +21,7 @@ E.g. set to 100 MiB
 `/memory?size=100`
 
 
-**`/gc`**
+### `/gc`
 
 Requests a garbage collection via System.gc()
 This shouldn't be required, as GC will happen automatically, but it can be useful if you want to speed up your tests.
@@ -28,8 +33,8 @@ Exposes the following endpoints (via actuator)
 More about these:
 https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
 
-# Usage
-## Local
+## Usage
+### Local
 ```
 docker run -it --rm -e JAVA_OPTS="<java options>" -p 8080:8080 serbangilvitu/wave:<tag>
 ```
@@ -45,16 +50,17 @@ You can identify the local process using
 ps -C java -o pid,%cpu,%mem,args| grep wave
 ```
 
-# Prometheus
+## Prometheus
+Prometheus can be useful to observe the JVM behavior, by scraping the /actuator/prometheus endpoint
 
-## Helm
-In case you do not have helm installed, it can be quickly set up using
+### Prerequisites
+In case you do not have He, installed, it can be quickly set up using
 ```
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 ```
-## Setup
+### Setup
 ```
 helm install prometheus stable/prometheus -f k8s/prometheus/values.yaml
 ```
@@ -64,7 +70,7 @@ Expose the service using port forwarding
 kubectl port-forward svc/prometheus-server 9090:80
 ```
 
-## Validate setup
+### Validate setup
 Go to http://localhost:9090/targets
 
 

@@ -3,8 +3,13 @@
 Simple app which can be used to study the behaviour of containerized Java applications, running with different JDKs and configurations. 
 
 [Endpoints](https://github.com/serbangilvitu/wave#endpoints)
+* [/memory](https://github.com/serbangilvitu/wave/blob/master/README.md#memory)
+* [/gc](https://github.com/serbangilvitu/wave/blob/master/README.md#gc)
 
 [Actuator Endpoints](https://github.com/serbangilvitu/wave#actuator-endpoints)
+
+[Usage](https://github.com/serbangilvitu/wave/blob/master/README.md#usage)
+
 
 
 ## Endpoints
@@ -50,17 +55,19 @@ You can identify the local process using
 ps -C java -o pid,%cpu,%mem,args| grep wave
 ```
 
-## Prometheus
+## JVM Heap Allocation Demo in Kubernetes
+
+### Prometheus
 Prometheus can be useful to observe the JVM behavior, by scraping the /actuator/prometheus endpoint
 
-### Prerequisites
+#### Prerequisites
 In case you do not have He, installed, it can be quickly set up using
 ```
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 ```
-### Setup
+#### Setup
 ```
 helm install prometheus stable/prometheus -f k8s/prometheus/values.yaml
 ```
@@ -70,11 +77,9 @@ Expose the service using port forwarding
 kubectl port-forward svc/prometheus-server 9090:80
 ```
 
-### Validate setup
+#### Validate setup
 Go to http://localhost:9090/targets
 
-
-## JVM Heap Allocation Demo
 ### Deploy Kubernetes demo app
 The demo is using JDK8, but the same could be done for JDK11 or 14, by simply passing a different value for deployment.image.tag
 ```

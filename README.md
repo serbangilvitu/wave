@@ -70,14 +70,14 @@ Go to http://localhost:9090/targets
 
 ## JVM Heap Allocation Demo
 ### Deploy Kubernetes demo app
-The demo is using JDK8, but the same could be done for JDK11 or 14, by simply updating the image in deployment.yaml
+The demo is using JDK8, but the same could be done for JDK11 or 14, by simply passing a different value for deployment.image.tag
 ```
-kubectl apply -f k8s/wave-jdk8/
+helm template wave k8s/wave -f k8s/wave/values.yaml --set deployment.image.tag="jdk8"| kubectl apply -f -
 ```
 
 Expose the service using port forwarding
 ```
-kubectl port-forward svc/wave-jdk8 8080:8080
+kubectl port-forward svc/wave 8080:8080
 ```
 
 
